@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUREVER HOME - Find Your Furever Friend</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+:root {
+  /* Color Palette */
+  --primary-orange: #FF8C42;
+  --warm-brown: #8B5A3C;
+  --gentle-green: #7CB342;
+  --cream: #F5F5DC;
+  --soft-white: #FAFAFA;
+  --light-gray: #E8E8E8;
+  --bright-blue: #42A5F5;
+  --soft-pink: #FFC1CC;
+  --dark-charcoal: #333333;
+  --lost-red: #E74C3C;
+  --found-green: #27AE60;
+  
+  /* Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 50px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark-charcoal);
+  background-color: var(--soft-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-orange);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo::before {
+  content: '🐾';
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark-charcoal);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.nav-links a:hover {
+  color: var(--primary-orange);
+  background: rgba(255, 140, 66, 0.1);
+}
+
+.nav-links a.active {
+  color: var(--primary-orange);
+  background: rgba(255, 140, 66, 0.15);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--dark-charcoal);
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 70px;
+  background: linear-gradient(135deg, rgba(255, 140, 66, 0.9), rgba(139, 90, 60, 0.9)),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23FF8C42" width="1200" height="600"/></svg>');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.95;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 32px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: white;
+  color: var(--primary-orange);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: var(--primary-orange);
+  transform: scale(1.05);
+}
+
+/* Statistics Counter */
+.stats-container {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  display: block;
+}
+
+.stat-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Quick Access Section */
+.quick-access {
+  padding: var(--spacing-xl) var(--spacing-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--dark-charcoal);
+}
+
+.quick-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.quick-card {
+  background: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.quick-card:nth-child(1) { animation-delay: 0.1s; }
+.quick-card:nth-child(2) { animation-delay: 0.2s; }
+.quick-card:nth-child(3) { animation-delay: 0.3s; }
+
+.quick-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.quick-card h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  margin-bottom: var(--spacing-xs);
+  color: var(--dark-charcoal);
+}
+
+.quick-card p {
+  color: #666;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Sections */
+.section {
+  display: none;
+  padding: var(--spacing-xl) var(--spacing-md);
+  max-width: 1200px;
+  margin: 80px auto 0;
+  animation: fadeIn 0.5s ease;
+}
+
+.section.active {
+  display: block;
+}
+
+/* Browse Pets Section */
+.browse-container {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.filter-sidebar {
+  flex: 0 0 280px;
+  background: white;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+
+.filter-sidebar h3 {
+  font-family: var(--font-heading);
+  margin-bottom: var(--spacing-sm);
+}
+
+.filter-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.filter-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  font-size: 14px;
+}
+
+.filter-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-md);
+}
+
+.btn-filter {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-apply {
+  background: var(--primary-orange);
+  color: white;
+}
+
+.btn-apply:hover {
+  background: var(--warm-brown);
+}
+
+.btn-clear {
+  background: var(--light-gray);
+  color: var(--dark-charcoal);
+}
+
+.btn-clear:hover {
+  background: #ddd;
+}
+
+.pets-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.pet-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pet-image {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, var(--primary-orange), var(--warm-brown));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pet-image:hover .pet-emoji {
+  transform: scale(1.1);
+}
+
+.pet-emoji {
+  transition: transform 0.3s ease;
+}
+
+.pet-info {
+  padding: var(--spacing-sm);
+}
+
+.pet-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.pet-breed {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.pet-details {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+  font-size: 13px;
+  color: #777;
+}
+
+.pet-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: var(--spacing-xs);
+}
+
+.pet-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.4;
+}
+
+.pet-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.btn-small {
+  flex: 1;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.btn-learn {
+  background: var(--primary-orange);
+  color: white;
+}
+
+.btn-learn:hover {
+  background: var(--warm-brown);
+  transform: scale(1.02);
+}
+
+.btn-favorite {
+  background: var(--light-gray);
+  color: var(--dark-charcoal);
+  width: 40px;
+  flex: 0;
+}
+
+.btn-favorite:hover {
+  background: var(--soft-pink);
+  color: #E74C3C;
+}
+
+.btn-favorite.favorited {
+  background: var(--soft-pink);
+  color: #E74C3C;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-md);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  border-radius: var(--radius-lg);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  background: white;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: var(--light-gray);
+}
+
+.modal-pet-image {
+  width: 100%;
+  height: 350px;
+  background: linear-gradient(135deg, var(--primary-orange), var(--warm-brown));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 150px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.modal-body {
+  padding: var(--spacing-lg);
+}
+
+.modal-body h2 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.modal-subtitle {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: var(--spacing-md);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.detail-item {
+  background: var(--cream);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+.detail-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark-charcoal);
+}
+
+.personality-tags {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-md);
+}
+
+.tag {
+  background: var(--gentle-green);
+  color: white;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.good-with-list {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #E8F5E9;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--gentle-green);
+  font-weight: 600;
+}
+
+.adoption-fee-box {
+  background: var(--primary-orange);
+  color: white;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+  margin: var(--spacing-md) 0;
+}
+
+.fee-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.fee-amount {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+.btn-adopt {
+  width: 100%;
+  padding: 16px;
+  background: var(--bright-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-adopt:hover {
+  background: #1976D2;
+  transform: scale(1.02);
+}
+
+/* Adoption Form */
+.form-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-section h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  margin-bottom: var(--spacing-sm);
+  color: var(--dark-charcoal);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--gentle-green);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background: #689F38;
+  transform: scale(1.02);
+}
+
+/* Lost & Found Section */
+.tab-container {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.tab {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab.active {
+  color: var(--primary-orange);
+  border-bottom-color: var(--primary-orange);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.post-form-container {
+  background: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.toggle-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid var(--light-gray);
+  background: white;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+  background: var(--primary-orange);
+  color: white;
+  border-color: var(--primary-orange);
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.post-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.post-banner {
+  padding: 8px;
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.post-banner.lost {
+  background: var(--lost-red);
+}
+
+.post-banner.found {
+  background: var(--found-green);
+}
+
+.post-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, var(--primary-orange), var(--warm-brown));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+}
+
+.post-info {
+  padding: var(--spacing-sm);
+}
+
+.post-type {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.post-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.post-date {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.post-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.4;
+}
+
+.btn-contact {
+  width: 100%;
+  padding: 10px;
+  background: var(--bright-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-contact:hover {
+  background: #1976D2;
+}
+
+/* Support Shelters Section */
+.shelters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.shelter-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.shelter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.shelter-header {
+  background: linear-gradient(135deg, var(--gentle-green), var(--primary-orange));
+  color: white;
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.shelter-icon {
+  font-size: 60px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.shelter-name {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.shelter-location {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.shelter-body {
+  padding: var(--spacing-md);
+}
+
+.shelter-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.stat-label-shelter {
+  font-size: 14px;
+  color: #666;
+}
+
+.stat-value-shelter {
+  font-weight: 700;
+  color: var(--dark-charcoal);
+}
+
+.needs-list {
+  margin: var(--spacing-sm) 0;
+}
+
+.needs-title {
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  font-size: 14px;
+}
+
+.need-item {
+  font-size: 13px;
+  color: #666;
+  padding: 4px 0;
+  padding-left: 16px;
+  position: relative;
+}
+
+.need-item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-orange);
+  font-weight: 700;
+}
+
+.progress-bar {
+  margin: var(--spacing-sm) 0;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--light-gray);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gentle-green), var(--primary-orange));
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+
+.btn-support {
+  width: 100%;
+  padding: 12px;
+  background: var(--bright-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: var(--spacing-sm);
+}
+
+.btn-support:hover {
+  background: #1976D2;
+  transform: scale(1.02);
+}
+
+/* Donation Modal */
+.donation-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.amount-option {
+  padding: 16px;
+  background: var(--light-gray);
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.amount-option:hover {
+  background: var(--cream);
+}
+
+.amount-option.selected {
+  background: var(--primary-orange);
+  color: white;
+  border-color: var(--warm-brown);
+}
+
+/* Success Message */
+.success-message {
+  display: none;
+  background: #E8F5E9;
+  border: 2px solid var(--gentle-green);
+  color: var(--gentle-green);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+  margin: var(--spacing-md) 0;
+  animation: slideDown 0.3s ease;
+}
+
+.success-message.show {
+  display: block;
+}
+
+.success-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.success-message h3 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.btn-register-shelter {
+  background: #4CAF50;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-register-shelter:hover {
+  background: #43a047;
+  transform: scale(1.03);
+}
+
+/* Modal tweaks for cleaner look */
+#registerShelterModal .modal-content {
+  max-width: 600px;
+  width: 90%;
+  padding: 25px;
+  border-radius: 14px;
+  background-color: #fff;
+}
+
+#registerShelterModal h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #333;
+}
+
+#registerShelterModal .form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* Footer */
+.footer {
+  background: var(--dark-charcoal);
+  color: white;
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.footer-section h4 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-orange);
+}
+
+.footer-section p,
+.footer-section a {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  line-height: 1.8;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: var(--primary-orange);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.social-icons {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--primary-orange);
+  transform: scale(1.1);
+}
+
+.newsletter-form {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+}
+
+.newsletter-form button {
+  padding: 10px 20px;
+  background: var(--primary-orange);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: var(--warm-brown);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: var(--spacing-lg) auto 0;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-sm);
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .hero h1 {
+    font-size: 32px;
+  }
+  
+  .hero p {
+    font-size: 16px;
+  }
+  
+  .stats-container {
+    gap: var(--spacing-md);
+  }
+  
+  .stat-number {
+    font-size: 28px;
+  }
+  
+  .browse-container {
+    flex-direction: column;
+  }
+  
+  .filter-sidebar {
+    position: static;
+    width: 100%;
+  }
+  
+  .pets-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-content {
+    margin: var(--spacing-sm);
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 4px solid var(--light-gray);
+  border-top: 4px solid var(--primary-orange);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: var(--spacing-lg) auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Scroll animations */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">FUREVER HOME</div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#browse" class="nav-link" data-section="browse">Browse Pets</a></li>
+                <li><a href="#lost-found" class="nav-link" data-section="lost-found">Lost &amp; Found</a></li>
+                <li><a href="#support" class="nav-link" data-section="support">Support Shelters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home-section">
+        <div class="hero-content">
+            <h1>Find Your Furever Friend Today</h1>
+            <p>Give a rescued pet a second chance at happiness</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="navigateToSection('browse')">Browse Adoptable Pets</button>
+                <button class="btn btn-secondary" onclick="navigateToSection('lost-found')">Report Lost/Found Pet</button>
+            </div>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="1247">0</span>
+                    <span class="stat-label">Pets Adopted This Year</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="68">0</span>
+                    <span class="stat-label">Active Shelters</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="1189">0</span>
+                    <span class="stat-label">Happy Families</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section class="quick-access">
+        <h2 class="section-title">How Can We Help You Today?</h2>
+        <div class="quick-cards">
+            <div class="quick-card" onclick="navigateToSection('browse')">
+                <div class="card-icon">🐕</div>
+                <h3>Adopt a Pet</h3>
+                <p>Browse our available animals and find your perfect companion</p>
+            </div>
+            <div class="quick-card" onclick="navigateToSection('lost-found')">
+                <div class="card-icon">🔍</div>
+                <h3>Lost &amp; Found</h3>
+                <p>Help reunite lost pets with their families</p>
+            </div>
+            <div class="quick-card" onclick="navigateToSection('support')">
+                <div class="card-icon">❤️</div>
+                <h3>Help Shelters</h3>
+                <p>Support shelters with donations and sponsorships</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Browse Pets Section -->
+    <section class="section" id="browse">
+        <h2 class="section-title">Find Your Perfect Companion</h2>
+        <div class="browse-container">
+            <aside class="filter-sidebar">
+                <h3>Filters</h3>
+                <div class="filter-group">
+                    <label>Animal Type</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" class="filter-type" value="Dog" checked> Dog</label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-type" value="Cat" checked> Cat</label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-type" value="Rabbit" checked> Rabbit</label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-type" value="Bird" checked> Bird</label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Size</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" class="filter-size" value="Small" checked> Small</label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-size" value="Medium" checked> Medium</label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-size" value="Large" checked> Large</label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Gender</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" class="filter-gender" value="Male" checked> Male</label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-gender" value="Female" checked> Female</label>
+                    </div>
+                </div>
+                <div class="filter-buttons">
+                    <button class="btn-filter btn-apply" onclick="applyFilters()">Apply Filters</button>
+                    <button class="btn-filter btn-clear" onclick="clearFilters()">Clear All</button>
+                </div>
+            </aside>
+            <div class="pets-grid" id="petsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Lost & Found Section -->
+<section class="section" id="lost-found">
+  <h2 class="section-title">Lost &amp; Found Community</h2>
+
+  <div class="post-form-container">
+    <h3>Post About a Pet</h3>
+    <div class="toggle-buttons">
+      <button class="toggle-btn active" onclick="togglePostType('lost')">I Lost a Pet</button>
+      <button class="toggle-btn" onclick="togglePostType('found')">I Found a Pet</button>
+    </div>
+
+    <form id="lostFoundForm">
+  <input type="hidden" id="postType" name="postType" value="lost">
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="animalType">Animal Type *</label>
+      <select id="animalType" name="animalType" required>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+        <option value="Rabbit">Rabbit</option>
+        <option value="Bird">Bird</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="breed">Breed</label>
+      <input type="text" id="breed" name="breed" placeholder="If known">
+    </div>
+
+    <div class="form-group" id="petNameGroup">
+      <label for="petName">Pet Name</label>
+      <input type="text" id="petName" name="petName" placeholder="For lost pets">
+    </div>
+
+    <div class="form-group">
+      <label for="color">Color/Markings *</label>
+      <input type="text" id="color" name="color" required placeholder="e.g., Golden, White spots">
+    </div>
+
+    <div class="form-group">
+      <label for="size">Size *</label>
+      <select id="size" name="size" required>
+        <option value="Small">Small</option>
+        <option value="Medium">Medium</option>
+        <option value="Large">Large</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location *</label>
+      <input type="text" id="location" name="location" required placeholder="Area/Address">
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date *</label>
+      <input type="date" id="date" name="date" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Your Phone *</label>
+      <input type="tel" id="phone" name="phone" required placeholder="10-digit number">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="details">Additional Details</label>
+    <textarea id="details" name="details" placeholder="Any distinguishing features, behavior, etc."></textarea>
+  </div>
+
+  <button type="submit" class="btn-submit">Post to Community</button>
+</form>
+
+  </div>
+
+  <div class="tab-container">
+    <button class="tab active" onclick="switchTab('lost')">Lost Pets</button>
+    <button class="tab" onclick="switchTab('found')">Found Pets</button>
+  </div>
+
+  <div class="tab-content active" id="lost-tab">
+    <div class="posts-grid" id="lostPostsGrid"></div>
+  </div>
+
+  <div class="tab-content" id="found-tab">
+    <div class="posts-grid" id="foundPostsGrid"></div>
+  </div>
+</section>
+
+    <!-- Support Shelters Section -->
+    <section class="section" id="support">
+        <h2 class="section-title">Support Our Partner Shelters</h2>
+        <div class="shelters-grid" id="sheltersGrid"></div>
+        <div class="register-shelter-section" style="text-align:center; margin-top:30px;">
+  <button class="btn-register-shelter" onclick="openModal('registerShelterModal')">
+    ➕ Register Your Shelter
+  </button>
+</div>
+    </section>
+
+    <!-- Pet Detail Modal -->
+    <div class="modal" id="petModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('petModal')">&times;</button>
+            <div id="petModalContent"></div>
+        </div>
+    </div>
+
+    <!-- Donation Modal -->
+    <div class="modal" id="donationModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('donationModal')">&times;</button>
+            <div class="modal-body" id="donationModalContent">
+                <h2>Make a Donation</h2>
+                <div class="success-message" id="donationSuccess">
+                    <div class="success-icon">✓</div>
+                    <h3>Thank You!</h3>
+                    <p>Your donation will help save lives and provide care for animals in need.</p>
+                </div>
+                <form id="donationForm">
+                    <div class="form-section">
+                        <h3>Select Amount</h3>
+                        <div class="donation-options">
+                            <div class="amount-option" onclick="selectAmount(500)">₹500</div>
+                            <div class="amount-option" onclick="selectAmount(1000)">₹1,000</div>
+                            <div class="amount-option" onclick="selectAmount(2500)">₹2,500</div>
+                            <div class="amount-option" onclick="selectAmount(5000)">₹5,000</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Custom Amount</label>
+                            <input type="number" id="customAmount" placeholder="Enter custom amount">
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Your Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone *</label>
+                                <input type="tel" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Payment Information</h3>
+                        <div class="form-group">
+                            <label>Card Number *</label>
+                            <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Expiry Date *</label>
+                                <input type="text" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label>CVV *</label>
+                                <input type="text" placeholder="123" maxlength="3" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Make a Difference</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adoption Application Modal -->
+    <div class="modal" id="adoptionModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('adoptionModal')">&times;</button>
+            <div class="modal-body">
+                <h2>Adoption Application</h2>
+                <div class="success-message" id="adoptionSuccess">
+                    <div class="success-icon">✓</div>
+                    <h3>Application Submitted!</h3>
+                    <p>We'll review your application and contact you within 2-3 business days.</p>
+                </div>
+                <form id="adoptionForm">
+                    <div class="form-section">
+                        <h3>Personal Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone *</label>
+                                <input type="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Age *</label>
+                                <input type="number" required min="18">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Address *</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Household Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Type of Residence *</label>
+                                <select required>
+                                    <option value="">Select...</option>
+                                    <option value="House">House</option>
+                                    <option value="Apartment">Apartment</option>
+                                    <option value="Condo">Condo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Do you own or rent? *</label>
+                                <select required>
+                                    <option value="">Select...</option>
+                                    <option value="Own">Own</option>
+                                    <option value="Rent">Rent</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Number of household members</label>
+                                <input type="number" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label>Current pets</label>
+                                <input type="text" placeholder="Type and number">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Experience &amp; Preferences</h3>
+                        <div class="form-group">
+                            <label>Previous pet ownership experience *</label>
+                            <textarea required placeholder="Tell us about your experience with pets"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Why do you want to adopt this pet? *</label>
+                            <textarea required placeholder="Share your reasons"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Shelter Modal -->
+<div class="modal" id="registerShelterModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('registerShelterModal')">&times;</span>
+    <h2>Register Your Shelter</h2>
+    <p style="color:#666; font-size:14px;">If you run an animal shelter, fill out this form to join our platform. We’ll review your request and contact you soon.</p>
+
+    <form id="shelterRegistrationForm" style="margin-top:20px;">
+      <div class="form-group">
+        <label for="shelterName">Shelter Name *</label>
+        <input type="text" id="shelterName" required placeholder="e.g., Hope Animal Rescue">
+      </div>
+
+      <div class="form-group">
+        <label for="shelterLocation">Location *</label>
+        <input type="text" id="shelterLocation" required placeholder="City, State">
+      </div>
+
+      <div class="form-group">
+        <label for="shelterDescription">Description *</label>
+        <textarea id="shelterDescription" required placeholder="Briefly describe your shelter’s work"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="shelterNeeds">Current Needs</label>
+        <input type="text" id="shelterNeeds" placeholder="e.g., Dog Food, Medical Supplies">
+      </div>
+
+      <div class="form-group">
+        <label for="shelterContact">Contact Email / Phone *</label>
+        <input type="text" id="shelterContact" required placeholder="e.g., contact@hopepets.org or +91-9876543210">
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Shelter</button>
+    </form>
+
+    <p id="shelterFormMessage" style="display:none; color:green; margin-top:15px; font-weight:600;">
+      ✅ Thank you! We'll review your shelter details and get back to you soon.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About FUREVER HOME</h4>
+                <p>Connecting loving families with rescued pets and supporting animal shelters across India. Together, we're making a difference, one adoption at a time.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">🐦</a>
+                    <a href="#" class="social-icon">📺</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+    <li><a href="#" data-action="adoption-process">Adoption Process</a></li>
+    <li><a href="#" data-action="faqs">FAQs</a></li>
+    <li><a href="#" data-action="volunteer">Volunteer</a></li>
+    <li><a href="#" data-action="contact-us">Contact Us</a></li>
+    <li><a href="#" data-action="success-stories">Success Stories</a></li>
+</ul>
+
+            </div>
+            <div class="footer-section">
+                <h4>Contact Information</h4>
+                <p>Email: hello@furever.in</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Address: 123 Pet Street, Jaipur, Rajasthan 302021</p>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Stay updated with adoption stories and shelter news</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FUREVER HOME. All rights reserved. Made with ❤️ for animals.</p>
+        </div>
+    </footer>
+
+    <!-- Add this at the very end of body -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+  import { getDatabase, ref, set, push, get, update, remove, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+  // 🔥 Your Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyBByGvaTGEGcsmJRRuoiIvUVC1fwYSzU_I",
+  authDomain: "pet-adoption-85ea6.firebaseapp.com",
+  databaseURL: "https://pet-adoption-85ea6-default-rtdb.firebaseio.com/",
+  projectId: "pet-adoption-85ea6",
+  storageBucket: "pet-adoption-85ea6.firebasestorage.app",
+  messagingSenderId: "719541374777",
+  appId: "1:719541374777:web:76a53c1ab75b99d24522e8",
+  measurementId: "G-Z84DK5PXGG"
+};
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getDatabase(app);
+
+  // Expose Firebase objects to global scope for app.js
+  window.db = db;
+  window.ref = ref;
+  window.set = set;
+  window.push = push;
+  window.get = get;
+  window.update = update;
+  window.remove = remove;
+  window.onValue = onValue;
+</script>
+
+<script type="module" src="app.js"></script>
+<!-- Adoption Process Modal -->
+<div class="modal" id="adoptionProcessModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('adoptionProcessModal')">&times;</button>
+    <div class="modal-body">
+      <h2>How to Adopt a Pet</h2>
+      <ol style="padding-left: 25px;">
+        <li><strong>Browse:</strong> View available pets and choose your match.</li>
+        <li><strong>Apply:</strong> Complete the adoption application form.</li>
+        <li><strong>Screening:</strong> Our team reviews your background and suitability.</li>
+        <li><strong>Meet & Greet:</strong> Meet your chosen pet face-to-face.</li>
+        <li><strong>Finalize:</strong> Submit documents and adoption fee, then take your pet home!</li>
+        <li><strong>After Care:</strong> Receive support for settling your pet and guidance from our team.</li>
+      </ol>
+      <p style="margin-top:16px;">Required: valid ID, proof of residence, and photo. All adoptions include initial vet check and starter kit!</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQs Modal -->
+<div class="modal" id="faqsModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('faqsModal')">&times;</button>
+    <div class="modal-body">
+      <h2>Frequently Asked Questions</h2>
+      <ul>
+        <li><strong>What is the adoption fee for?</strong> It helps cover vaccinations, food, and basic medical care.</li>
+        <li><strong>How long does the process take?</strong> Typically 2-5 days, depending on screening and availability.</li>
+        <li><strong>Can I adopt if I live in a rented house?</strong> Yes, with landlord’s consent documentation.</li>
+        <li><strong>What support is offered post-adoption?</strong> Guidance, health checks, and emergency contacts.</li>
+        <li><strong>How do I become a volunteer?</strong> Use the volunteer registration form below!</li>
+        <li><strong>Can I return the pet if it doesn’t work out?</strong> We offer returns/advice within 30 days for direct adoptions.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Volunteer Registration Modal -->
+<div class="modal" id="volunteerModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('volunteerModal')">&times;</button>
+    <div class="modal-body">
+      <h2>Volunteer Registration</h2>
+      <form id="volunteerForm">
+        <div class="form-group"><label>Name<input type="text" required></label></div>
+        <div class="form-group"><label>Email<input type="email" required></label></div>
+        <div class="form-group"><label>Phone<input type="tel" required></label></div>
+        <div class="form-group"><label>Preferred Activities
+          <select required>
+            <option value="">Select</option>
+            <option>Dog Walking</option>
+            <option>Cat Care</option>
+            <option>Fundraising</option>
+            <option>Events</option>
+          </select>
+        </label></div>
+        <div class="form-group"><label>Availability<input type="text" placeholder="e.g., weekends, weekday evenings"></label></div>
+        <button type="submit" class="btn-submit">Register</button>
+      </form>
+      <div id="volunteerSuccess" class="success-message">Thank you for registering! Our team will contact you soon.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Us Modal -->
+<div class="modal" id="contactUsModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('contactUsModal')">&times;</button>
+    <div class="modal-body">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <div class="form-group"><label>Name<input type="text" required></label></div>
+        <div class="form-group"><label>Email<input type="email" required></label></div>
+        <div class="form-group"><label>Phone<input type="tel"></label></div>
+        <div class="form-group"><label>Message<textarea required></textarea></label></div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+      <div id="contactSuccess" class="success-message">Thank you for reaching out! We'll reply as soon as possible.</div>
+      <div style="margin-top:20px;font-size:14px;">
+        <b>Email:</b> hellofurever.in<br>
+        <b>Phone:</b> +91 98765 43210<br>
+        <b>Address:</b> 123 Pet Street, Mumbai, Maharashtra 400001
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success Stories Carousel Modal -->
+<div class="modal" id="successStoriesModal">
+  <div class="modal-content" style="max-width:520px;">
+    <button class="modal-close" onclick="closeModal('successStoriesModal')">&times;</button>
+    <div class="modal-body">
+      <h2>Success Stories</h2>
+      <div id="storiesCarousel" class="carousel">
+        <div class="carousel-slide active">
+          <img src="https://placekitten.com/400/200" alt="Milo, Delhi" style="width:100%;">
+          <h3>Milo – Delhi</h3>
+          <p>Abandoned as a kitten, Milo found his family in 2024. He now snoozes in sunlight and plays with two loving kids!</p>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://placedog.net/400/200?id=1" alt="Simba, Mumbai" style="width:100%;">
+          <h3>Simba – Mumbai</h3>
+          <p>Simba, a rescued stray, became the best friend of a senior couple, brightening each day with his goofy nature.</p>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://placekitten.com/401/200" alt="Fluffy, Bangalore" style="width:100%;">
+          <h3>Fluffy – Bangalore</h3>
+          <p>Fluffy overcame chronic illness. Today, she is the purring princess of her forever home, healthy and happy!</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:10px;">
+        <button class="carousel-btn" onclick="carouselPrev()">&lt;</button>
+        <button class="carousel-btn" onclick="carouselNext()">&gt;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
